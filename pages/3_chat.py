@@ -2,6 +2,32 @@ import streamlit as st
 import ollama as ol
 import pandas as pd
 
+try:
+    st.sidebar.title("Old Chats")
+
+    conversation_df = pd.read_csv("Database.csv")
+
+    chat_ids = conversation_df["chat_id"].unique()
+
+    for chat_id in chat_ids:
+
+        if st.sidebar.button(f"Chat {chat_id}"):
+
+            selected_chat = conversation_df[
+                conversation_df["chat_id"] == chat_id
+            ]
+
+            selected_chat = selected_chat.drop(columns=["chat_id"])
+
+            st.session_state.messages = selected_chat.to_dict(
+                orient="records"
+            )
+
+            st.session_state.chat_id = chat_id
+
+except FileNotFoundError:
+    st.sidebar.write("No previous chats found.")
+
 if st.button("New Chat"):
     conversation_df=pd.DataFrame(st.session_state.messages)
     conversation_df["chat_id"] = st.session_state.chat_id
@@ -20,7 +46,7 @@ if "chat_id" not in st.session_state:
 
 def ask_llama(messages):
     response = ol.chat(
-        model="llama3.2",
+        model="qwen3",
         messages=messages
     )
 

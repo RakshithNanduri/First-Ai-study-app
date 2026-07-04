@@ -5,4 +5,3 @@
     - app logo
     - overview
     - Ai chat 
-- [ ] version 2 ^_^ Is how to design the app

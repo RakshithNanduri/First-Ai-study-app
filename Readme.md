@@ -5,5 +5,5 @@
     - app logo
     - overview
     - Ai chat 
-    -added memory chat!
-    -saving chat in csv file
+    - added memory chat!
+    - saving chat in csv file

@@ -4,4 +4,5 @@
     - Homepage
     - app logo
     - overview
-    - Ai chat 
+    - Ai chat
+    - memory chat added!

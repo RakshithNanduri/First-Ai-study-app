@@ -4,5 +4,6 @@
     - Homepage
     - app logo
     - overview
-    - Ai chat
-    - memory chat added!
+    - Ai chat 
+    - added memory chat!
+    - saving chat in csv file

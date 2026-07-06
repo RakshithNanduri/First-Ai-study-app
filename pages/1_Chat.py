@@ -2,11 +2,28 @@ import streamlit as st
 import ollama as ol
 import pandas as pd
 
+MODEL_NAME = "qwen3.5:9b"
+
 
 def ask_ollama(messages):
-    response = ol.chat(model="qwen3:latest",messages=messages)
-    answer = response["message"]["content"]
-    return answer
+    try:
+        response = ol.chat(model=MODEL_NAME, messages=messages)
+        return response["message"]["content"]
+    except ol.ResponseError as error:
+        if error.status_code == 404:
+            st.error(
+                f"Model '{MODEL_NAME}' is not installed. Run: ollama pull {MODEL_NAME}"
+            )
+        else:
+            st.error(f"Ollama returned an error: {error}")
+    except Exception as error:
+        st.error(
+            "Could not connect to Ollama. Make sure the Ollama app is running, "
+            "then try again."
+        )
+        st.caption(f"Details: {error}")
+
+    return None
 
 
 if "chat_id" not in st.session_state:
@@ -30,9 +47,10 @@ if prompt:
     st.session_state.messages.append(user_message)
     st.chat_message("user").write(prompt)
     reply = ask_ollama(st.session_state.messages)
-    assistant_message = {"role": "assistant","content": reply}
-    st.session_state.messages.append(assistant_message)
-    st.chat_message("assistant").write(reply)
+    if reply:
+        assistant_message = {"role": "assistant","content": reply}
+        st.session_state.messages.append(assistant_message)
+        st.chat_message("assistant").write(reply)
 
 
 if st.button("Save Chat"):

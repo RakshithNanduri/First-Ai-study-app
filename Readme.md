@@ -7,6 +7,8 @@
     - Ai chat 
     - added memory chat!
     - saving chat in csv file
+
+- [X] Version 2 ^_^
     - loading old chats from csv file
     - resources page for uploading files
     - checkbox to select files for ai context

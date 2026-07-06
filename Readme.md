@@ -7,3 +7,7 @@
     - Ai chat 
     - added memory chat!
     - saving chat in csv file
+    - loading old chats from csv file
+    - resources page for uploading files
+    - checkbox to select files for ai context
+    - pdf file context using pypdf

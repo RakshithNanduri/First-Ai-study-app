@@ -1,3 +1,5 @@
 import streamlit as st
-st.title('First ever ai app')
-st.text('this is first ever ai')
+
+
+st.title("First ever AI app")
+st.text("This is my first ever AI app")

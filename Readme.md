@@ -2,29 +2,29 @@
 
 In this app, I will test how much I can code without using help from an AI.
 
-## Version 1
+- [X] Version 1
 
-- Homepage
-- App logo
-- Overview
-- AI chat
-- Added memory chat
-- Saving chat in a CSV file
+    - Homepage
+    - App logo
+    - Overview
+    - AI chat
+    - Added memory chat
+    - Saving chat in a CSV file
 
-## Version 2
+- [X] Version 2
 
-- Loading old chats from a CSV file
-- Resources page for uploading files
-- Checkbox to select files for AI context
-- PDF file context using pypdf
+    - Loading old chats from a CSV file
+    - Resources page for uploading files
+    - Checkbox to select files for AI context
+    - PDF file context using pypdf
 
-## Version 3
+- [X] Version 3
 
-- Added beginner-friendly study tutor prompt
-- Added helpful Ollama error messages
-- Added empty answer handling
-- Added blank question warning
-- Added checkbox to switch between general and coding models
-- Improved homepage design
-- Improved Chat page headings and sidebar layout
-- Improved Resources page text and headings
+    - Added beginner-friendly study tutor prompt
+    - Added helpful Ollama error messages
+    - Added empty answer handling
+    - Added blank question warning
+    - Added checkbox to switch between general and coding models
+    - Improved homepage design
+    - Improved Chat page headings and sidebar layout
+    - Improved Resources page text and headings

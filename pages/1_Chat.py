@@ -31,17 +31,17 @@ if "show_chat_history" not in st.session_state:
     st.session_state.show_chat_history = False
 
 with st.sidebar:
-    st.header("AI Model")
+    st.header("Chat options")
     use_coding_model = st.checkbox("Use coding model")
 
     if use_coding_model:
-        model_name = "qwen2.5-coder:7b"
+        model_name = "qwen 3.5:4b"
     else:
         model_name = "llama3.2"
 
-    st.info("Using model: " + model_name)
+    st.write("Model:", model_name)
 
-    st.header("File Context")
+    st.header("File context")
 
     selected_files = []
 
@@ -51,8 +51,6 @@ with st.sidebar:
         for saved_file in saved_files:
             if st.checkbox(saved_file):
                 selected_files.append(saved_file)
-
-    st.header("Chat Actions")
 
     if st.button("New Chat"):
         st.session_state.messages = [
@@ -72,7 +70,7 @@ with st.sidebar:
         conversation_df["chat_id"] = st.session_state.chat_id
         conversation_df = conversation_df[["chat_id", "role", "content"]]
         conversation_df.to_csv("Database.csv", mode="a", index=False, header=False)
-        st.success("Chat saved!")
+        st.success("Chat Saved!")
 
     if st.button("Load chat"):
         st.session_state.show_chat_history = True
@@ -95,15 +93,12 @@ with st.sidebar:
         except FileNotFoundError:
             st.warning("No saved chat found yet.")
 
-st.title("Study Chat")
-st.caption("Ask a study question. The AI will answer like a beginner-friendly tutor.")
-
 for message in st.session_state.messages:
     role = message["role"]
     content = message["content"]
     st.chat_message(role).write(content)
 
-prompt = st.chat_input("Ask a study question")
+prompt = st.chat_input("Ask me anything")
 
 if prompt:
     context = ""

@@ -118,7 +118,7 @@ AI Study Companion
 Clone the repository
 
 ```bash
-git clone https://github.com/rakshithgamer123456789-a11y/First-Ai-study-app.git
+git clone https://github.com/RakshithNanduri/First-Ai-study-app.git
 ```
 
 Move into the project

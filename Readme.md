@@ -1,181 +1,142 @@
-<div align="center">
+# AI Study Companion
 
-# 🤖 AI Study Companion
+A local AI study assistant built with Python, Streamlit, Ollama, Pandas, and PyPDF. It combines local LLM chat, study-file context, model selection, and saved conversation history in a single desktop-friendly Streamlit application.
 
-### A beginner-friendly AI-powered study assistant built with **Python, Streamlit, and Ollama**
+<p align="left">
+  <img src="https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.11+">
+  <img src="https://img.shields.io/badge/Streamlit-Application-FF4B4B?style=flat-square&logo=streamlit&logoColor=white" alt="Streamlit">
+  <img src="https://img.shields.io/badge/Ollama-Local%20LLM-111111?style=flat-square" alt="Ollama local LLM">
+  <img src="https://img.shields.io/badge/Pandas-Chat%20History-150458?style=flat-square&logo=pandas&logoColor=white" alt="Pandas">
+  <img src="https://img.shields.io/badge/PyPDF-PDF%20Context-2563EB?style=flat-square" alt="PyPDF">
+</p>
 
-![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-000000?style=for-the-badge)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas)
-![PyPDF](https://img.shields.io/badge/PyPDF-PDF%20Support-blue?style=for-the-badge)
+## Overview
 
----
+AI Study Companion is a learning-focused application for working with local language models through Ollama. The interface supports ordinary chat, study resources, PDF and text context, previous conversation history, and model switching without requiring a paid cloud API.
 
-**My first complete AI application built completely from scratch during my AI engineering journey.**
+The project was my first complete local-AI application. I built it to understand how a user interface, model calls, file processing, and persistent chat history fit together in one program.
 
-This project helped me understand how to build a real application using local LLMs, manage chat history, process PDFs, and create an interactive user interface using Streamlit.
+## Key features
 
-</div>
+- Local AI chat through Ollama
+- Streamlit-based interface
+- General and coding model selection
+- Session-based conversation display
+- Chat history saved to CSV
+- Previous chat loading
+- Study-resource uploads
+- PDF text extraction with PyPDF
+- Selected files used as model context
+- Study-tutor prompting
+- Empty-input checks and basic exception handling
 
----
-
-# 📖 Overview
-
-AI Study Companion is a lightweight study assistant that runs entirely on **local AI models through Ollama**.
-
-Instead of relying on paid cloud APIs, the application allows users to chat with local language models, upload study material, maintain conversation history, and receive beginner-friendly explanations.
-
-The goal of this project was not just to build an AI chatbot, but to understand how modern AI applications are structured from frontend to backend.
-
----
-
-# ✨ Features
-
-## ✅ Version 1
-
-- AI Chat Interface
-- Beautiful Homepage
-- Custom App Logo
-- Chat Memory
-- CSV Chat History
-- Beginner Friendly UI
-
----
-
-## ✅ Version 2
-
-- Load Previous Chats
-- File Upload Support
-- PDF Reading using PyPDF
-- Select Files as AI Context
-- Resource Management Page
-
----
-
-## ✅ Version 3
-
-- Beginner Study Tutor Prompt
-- Better Error Handling
-- Empty Input Validation
-- Model Switching
-- Improved Homepage
-- Better Sidebar Layout
-- Better Chat Experience
-
----
-
-# 🏗 Project Architecture
+## How it works
 
 ```text
-                User
-                  │
-                  ▼
-          Streamlit Interface
-                  │
-      ┌───────────┼───────────┐
-      ▼           ▼           ▼
- Chat System   File Upload   CSV Memory
-      │           │
-      ▼           ▼
-   Ollama      PDF Reader
-      │
-      ▼
- Local AI Model
+User
+  |
+  v
+Streamlit interface
+  |
+  +--> Chat state and history ------> CSV storage
+  |
+  +--> Uploaded study resources ----> PDF / text extraction
+  |
+  +--> Selected model + context ----> Ollama
+                                      |
+                                      v
+                                  Local LLM
 ```
 
----
+The application runs locally. Ollama handles model inference, while Streamlit provides the interface and application state. Uploaded study material can be selected as additional context for a conversation.
 
-# 📂 Project Structure
+## Project structure
 
 ```text
-AI Study Companion
-│
-├── pages/
-├── uploaded_files/
+First-Ai-study-app/
 ├── Main.py
 ├── Database.csv
+├── pages/
+├── uploaded_files/
 ├── requirements.txt
 ├── Readme.md
 └── .gitignore
 ```
 
----
+## Installation
 
-# 🚀 Technologies Used
-
-- Python
-- Streamlit
-- Ollama
-- Pandas
-- PyPDF
-- CSV Storage
-
----
-
-# ⚙ Installation
-
-Clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/RakshithNanduri/First-Ai-study-app.git
-```
-
-Move into the project
-
-```bash
 cd First-Ai-study-app
 ```
 
-Install dependencies
+### 2. Install Python dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Start Ollama
+### 3. Start Ollama
+
+Install Ollama and make sure at least one compatible local model is available, then start the Ollama service:
 
 ```bash
 ollama serve
 ```
 
-Run the application
+### 4. Run the application
 
 ```bash
 streamlit run Main.py
 ```
 
----
+## Usage
 
-# 💡 What I Learned
+1. Start the Streamlit application.
+2. Choose a local Ollama model.
+3. Chat directly, or upload study material.
+4. Select the files you want to include as context.
+5. Ask questions about the selected material.
+6. Load an earlier conversation when you want to continue previous work.
 
-This project taught me
+## Technical notes
 
-- Building complete Streamlit applications
-- Integrating local LLMs with Ollama
-- Managing chat history
-- Working with CSV databases
-- Reading PDF files
-- Organizing Python projects
-- Debugging real-world problems
-- Building AI applications without paid APIs
+### Local inference
 
----
+The project uses Ollama instead of a hosted API. Model availability and response quality therefore depend on the models installed on the user's machine.
 
-# 🎯 Why I Built This
+### File context
 
-I wanted my first AI project to be something practical rather than another simple chatbot.
+PDF and text resources are converted into text that can be included in a prompt. Image-only PDF content is outside the current project's reliable scope.
 
-Instead of using cloud APIs, I challenged myself to build an AI application powered entirely by local language models using Ollama. Along the way I learned application structure, debugging, state management, file handling, and how different components work together in a real AI project.
+### Conversation history
 
-Although this is my first AI application, it represents the beginning of my journey toward becoming an AI Engineer.
+Chat history is stored in a CSV-based workflow. This keeps the implementation simple and inspectable, but it is not intended to replace a production database.
 
----
+## What I learned
 
-<div align="center">
+This project gave me practical experience with:
 
-### Built with by Rakshith
+- connecting a Python application to a local LLM runtime;
+- managing Streamlit session state;
+- saving and loading chat history;
+- processing uploaded files;
+- extracting text from PDFs;
+- constructing prompts with additional context;
+- debugging interactions between UI, storage, and model calls.
 
-**Learning • Building • Improving**
+The project was completed with AI-assisted debugging and implementation support. I treat it as guided project experience rather than evidence that every part can already be reproduced independently from memory.
 
-</div>
+## Current scope
+
+AI Study Companion is a beginner local-AI application. It does not train or fine-tune models, provide multimodal PDF understanding, use a production database, or run as a hosted cloud service. Its purpose is to provide a working local study workflow and document the engineering lessons from building it.
+
+## Author
+
+**Rakshith Nanduri**  
+Computer Science student building foundations in Python, C, software engineering, and local AI applications.
+
+- GitHub: https://github.com/RakshithNanduri
+- Portfolio: https://rakshith-nanduri-portfolio.vercel.app

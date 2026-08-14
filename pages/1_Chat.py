@@ -60,6 +60,8 @@ with st.sidebar:
         st.rerun()
 
     if st.button("Save Chat"):
+        database_exists = os.path.exists("Database.csv") and os.path.getsize("Database.csv") > 0
+
         try:
             old_chats = pd.read_csv("Database.csv")
             st.session_state.chat_id = old_chats["chat_id"].max() + 1
@@ -69,7 +71,12 @@ with st.sidebar:
         conversation_df = pd.DataFrame(st.session_state.messages)
         conversation_df["chat_id"] = st.session_state.chat_id
         conversation_df = conversation_df[["chat_id", "role", "content"]]
-        conversation_df.to_csv("Database.csv", mode="a", index=False, header=False)
+        conversation_df.to_csv(
+            "Database.csv",
+            mode="a",
+            index=False,
+            header=not database_exists,
+        )
         st.success("Chat Saved!")
 
     if st.button("Load chat"):
